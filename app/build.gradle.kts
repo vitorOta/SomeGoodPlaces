@@ -14,7 +14,6 @@ android {
 
 dependencies {
     implementation(Dependencies.coreKotlinExtensions)
-    implementation(Dependencies.appCompat)
 
     testImplementation(TestDependencies.jUnit)
     androidTestImplementation(TestDependencies.androidx_test_ext_junit)

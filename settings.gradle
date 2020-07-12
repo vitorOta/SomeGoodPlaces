@@ -1,2 +1,4 @@
+include ':libraries:ui_components'
+include ':libraries:network'
 include ':app'
 rootProject.name = "Some Good Places"

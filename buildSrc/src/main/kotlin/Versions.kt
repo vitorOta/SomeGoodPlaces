@@ -13,6 +13,11 @@ object Versions {
     const val coreKotlinExtensions = "1.3.0"
 
     const val appCompat = "1.2.0-rc01"
+    const val constraintLayout = "2.0.0-beta8"
+
+    const val retrofit = "2.9.0"
+    const val gson = "2.8.6"
+    const val okHttpLoggingInterceptor = "4.8.0"
 }
 
 object TestVersions {

@@ -15,6 +15,14 @@ object Dependencies {
     const val coreKotlinExtensions = "androidx.core:core-ktx:${Versions.coreKotlinExtensions}"
 
     const val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
+    const val constraintLayout =
+        "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
+
+    const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
+    const val retrofitGsonConverter = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
+    const val gson = "com.google.code.gson:gson:${Versions.gson}"
+    const val okHttpLoggingInterceptor =
+        "com.squareup.okhttp3:logging-interceptor:${Versions.okHttpLoggingInterceptor}"
 }
 
 object TestDependencies {
