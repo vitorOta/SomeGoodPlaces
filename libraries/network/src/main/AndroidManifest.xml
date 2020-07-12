@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="somegoogplaces.libraries.network">
+    package="somegoodplaces.libraries.network">
 
     <uses-permission android:name="android.permission.INTERNET" />
 </manifest>
