@@ -17,6 +17,7 @@ object Dependencies {
     const val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
     const val constraintLayout =
         "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
+    const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
 
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     const val retrofitGsonConverter = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
@@ -29,6 +30,12 @@ object TestDependencies {
     const val jUnit = "junit:junit:${TestVersions.jUnit}"
     const val androidx_test_ext_junit =
         "androidx.test.ext:junit:${TestVersions.androidx_test_ext_junit}"
+    const val androidCoreTesting =
+        "androidx.arch.core:core-testing:${TestVersions.androidCoreTesting}"
+    const val mockk = "io.mockk:mockk:${TestVersions.mockk}"
+    const val mockWebServer = "com.squareup.okhttp3:mockwebserver:${TestVersions.mockWebServer}"
+    const val coroutinesTest =
+        "org.jetbrains.kotlinx:kotlinx-coroutines-test:${TestVersions.coroutinesTest}"
 
     const val espresso = "androidx.test.espresso:espresso-core:${TestVersions.espresso}"
 }

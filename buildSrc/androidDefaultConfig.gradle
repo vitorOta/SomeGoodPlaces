@@ -16,5 +16,7 @@ if (project.hasProperty("android")) {
         dependencies {
             implementation Dependencies.kotlin
         }
+
+        resourcePrefix "${project.name}_"
     }
 }

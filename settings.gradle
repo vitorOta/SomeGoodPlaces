@@ -1,3 +1,6 @@
+include ':libraries:testing'
+include ':libraries:common'
+include ':features:places'
 include ':libraries:ui_components'
 include ':libraries:network'
 include ':app'

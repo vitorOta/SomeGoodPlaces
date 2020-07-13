@@ -1,7 +1,6 @@
-package somegoogplaces.libraries.network
+package somegoodplaces.libraries.network
 
 import com.google.gson.Gson
-import com.google.gson.GsonBuilder
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -10,12 +9,11 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiClientBuilder {
     private val baseClient = OkHttpClient()
-    private val defaultGson = GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create()
 
     fun <S> createApi(
         apiClass: Class<S>,
         baseUrl: String = BuildConfig.API_URL,
-        gson: Gson = defaultGson,
+        gson: Gson = gsonDefault,
         vararg interceptors: Interceptor
     ): S {
         val builder = baseClient.newBuilder()

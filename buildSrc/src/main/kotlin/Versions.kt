@@ -14,6 +14,7 @@ object Versions {
 
     const val appCompat = "1.2.0-rc01"
     const val constraintLayout = "2.0.0-beta8"
+    const val glide = "4.11.0"
 
     const val retrofit = "2.9.0"
     const val gson = "2.8.6"
@@ -25,4 +26,9 @@ object TestVersions {
     const val androidx_test_ext_junit = "1.1.1"
 
     const val espresso = "3.2.0"
+
+    const val androidCoreTesting = "2.1.0"
+    const val mockk = "1.10.0"
+    const val mockWebServer = "4.8.0"
+    const val coroutinesTest = "1.3.7"
 }
