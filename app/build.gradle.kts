@@ -2,6 +2,7 @@ plugins {
     id(Plugins.androidApplication)
     id(Plugins.kotlinAndroid)
     id(Plugins.kotlinAndroidExtensions)
+    id(Plugins.kotlinKapt)
 }
 
 android {
@@ -13,7 +14,10 @@ android {
 }
 
 dependencies {
-    implementation(Dependencies.coreKotlinExtensions)
+    implementation(project(":features:places"))
+
+    implementation(Dependencies.hilt)
+    kapt(Dependencies.hiltCompiler)
 
     testImplementation(TestDependencies.jUnit)
     androidTestImplementation(TestDependencies.androidx_test_ext_junit)

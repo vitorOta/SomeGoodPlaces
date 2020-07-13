@@ -10,6 +10,8 @@ object Versions {
     const val androidGradlePlugin = "4.0.0"
     const val kotlin = "1.3.72"
 
+    const val hilt = "2.28.1-alpha"
+
     const val coreKotlinExtensions = "1.3.0"
 
     const val appCompat = "1.2.0-rc01"
