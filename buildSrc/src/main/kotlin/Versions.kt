@@ -14,6 +14,8 @@ object Versions {
 
     const val appCompat = "1.2.0-rc01"
     const val constraintLayout = "2.0.0-beta8"
+    const val recyclerView = "1.1.0"
+    const val cardView = "1.0.0"
     const val glide = "4.11.0"
 
     const val retrofit = "2.9.0"

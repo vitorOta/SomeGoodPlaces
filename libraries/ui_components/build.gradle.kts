@@ -10,5 +10,7 @@ android {
 dependencies {
     api(Dependencies.appCompat)
     api(Dependencies.constraintLayout)
+    api(Dependencies.recyclerView)
+    api(Dependencies.cardView)
     api(Dependencies.glide)
 }

@@ -17,6 +17,8 @@ object Dependencies {
     const val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
     const val constraintLayout =
         "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
+    const val recyclerView = "androidx.recyclerview:recyclerview:${Versions.recyclerView}"
+    const val cardView = "androidx.cardview:cardview:${Versions.cardView}"
     const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
 
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
