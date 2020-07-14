@@ -3,6 +3,7 @@ plugins {
     id(Plugins.kotlinAndroid)
     id(Plugins.kotlinAndroidExtensions)
     id(Plugins.kotlinKapt)
+    id(Plugins.hiltAndroid)
 }
 apply(from = rootProject.file("buildSrc/androidDefaultConfig.gradle"))
 
@@ -17,7 +18,11 @@ android {
 }
 
 dependencies {
+    implementation(project(":libraries:ui_components"))
     implementation(project(":features:places"))
+
+    implementation(Dependencies.navigation)
+    implementation(Dependencies.navigationUi)
 
     implementation(Dependencies.hilt)
     kapt(Dependencies.hiltCompiler)

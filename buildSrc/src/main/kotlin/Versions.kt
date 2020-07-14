@@ -14,6 +14,8 @@ object Versions {
 
     const val coreKotlinExtensions = "1.3.0"
 
+    const val navigation = "2.3.0"
+
     const val appCompat = "1.2.0-rc01"
     const val material = "1.2.0-beta01"
     const val constraintLayout = "2.0.0-beta8"

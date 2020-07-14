@@ -7,7 +7,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import somegoodplaces.features.places.R
 
 @AndroidEntryPoint
-class MainFragment : Fragment(R.layout.places_fragment_main) {
+class PlacesMainFragment : Fragment(R.layout.places_fragment_main) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
     }
