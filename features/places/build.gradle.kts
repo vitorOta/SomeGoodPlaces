@@ -3,10 +3,10 @@ plugins {
     id(Plugins.kotlinAndroid)
     id(Plugins.kotlinAndroidExtensions)
     id(Plugins.kotlinKapt)
+    id(Plugins.hiltAndroid)
 }
 
 dependencies {
-    implementation(project(":libraries:common"))
     implementation(project(":libraries:ui_components"))
     implementation(project(":libraries:network"))
     implementation(Dependencies.hilt)

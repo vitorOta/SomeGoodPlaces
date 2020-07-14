@@ -9,9 +9,8 @@ import org.junit.Before
 import org.junit.Test
 import somegoodplaces.features.places.data.online.PlacesApi
 import somegoodplaces.features.places.data.online.PlacesOnlineRepository
+import somegoodplaces.features.places.data.online.PlacesSchemasToDomainMapper
 import somegoodplaces.features.places.data.online.schemas.ListResponse
-import somegoodplaces.features.places.data.online.schemas.PlaceDetailsSchema
-import somegoodplaces.libraries.common.transform
 import somegoodplaces.libraries.network.ApiClientBuilder
 import somegoodplaces.libraries.network.exceptions.ApiException
 import somegoodplaces.libraries.network.fromJson
@@ -26,13 +25,15 @@ class PlacesOnlineRepositoryTest {
 
     private lateinit var repo: PlacesOnlineRepository
 
+    private val mapper = PlacesSchemasToDomainMapper()
+
     @Before
     fun setup() {
         server.start()
         val url = server.url("").toString()
 
         api = ApiClientBuilder.createApi(PlacesApi::class.java, url)
-        repo = PlacesOnlineRepository(api)
+        repo = PlacesOnlineRepository(mapper, api)
     }
 
     @After
@@ -51,7 +52,11 @@ class PlacesOnlineRepositoryTest {
 
         //assert
         val expectedResponse =
-            gsonDefault.fromJson<ListResponse>(jsonResponse).listLocations.transform()
+            gsonDefault.fromJson<ListResponse>(jsonResponse).listLocations.map {
+                mapper.placeSchemaToDomain(
+                    it
+                )
+            }
         assertEquals(expectedResponse, response)
     }
 
@@ -72,7 +77,8 @@ class PlacesOnlineRepositoryTest {
         val response = repo.getDetails(1)
 
         //assert
-        val expectedResponse = gsonDefault.fromJson<PlaceDetailsSchema>(jsonResponse).transform()
+        val expectedResponse =
+            mapper.placeDetailsSchemaToDomain(gsonDefault.fromJson(jsonResponse))
         assertEquals(expectedResponse, response)
     }
 

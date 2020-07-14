@@ -9,5 +9,3 @@ internal data class Schedule(
     val friday: ScheduleDay,
     val saturday: ScheduleDay
 )
-
-internal data class ScheduleDay(val open: String, val close: String)
