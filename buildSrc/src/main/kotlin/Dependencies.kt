@@ -21,6 +21,7 @@ object Dependencies {
     const val hiltCompiler = "com.google.dagger:hilt-android-compiler:${Versions.hilt}"
 
     const val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
+    const val material = "com.google.android.material:material:${Versions.material}"
     const val constraintLayout =
         "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     const val recyclerView = "androidx.recyclerview:recyclerview:${Versions.recyclerView}"

@@ -4,6 +4,7 @@ plugins {
     id(Plugins.kotlinAndroidExtensions)
     id(Plugins.kotlinKapt)
 }
+apply(from = rootProject.file("buildSrc/androidDefaultConfig.gradle"))
 
 android {
     defaultConfig {

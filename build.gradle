@@ -24,12 +24,6 @@ allprojects {
     }
 }
 
-subprojects {
-    afterEvaluate { project ->
-        project.apply from: rootProject.file("buildSrc/androidDefaultConfig.gradle")
-    }
-}
-
 task clean(type: Delete) {
     delete rootProject.buildDir
 }

@@ -5,6 +5,7 @@ plugins {
     id(Plugins.kotlinKapt)
     id(Plugins.hiltAndroid)
 }
+apply(from = rootProject.file("buildSrc/androidDefaultConfig.gradle"))
 
 dependencies {
     implementation(project(":libraries:ui_components"))
