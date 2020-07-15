@@ -5,7 +5,9 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="colorOnPrimary">@android:color/white</item>
+
+        <item name="fontFamily">@font/open_sans</item>
+        <item name="android:fontFamily">@font/open_sans</item>
 
         <item name="ratingBarStyle">@style/AppTheme.RatingBarStyle</item>
     </style>

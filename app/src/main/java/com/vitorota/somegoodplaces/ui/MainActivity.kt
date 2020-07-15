@@ -25,9 +25,6 @@ class MainActivity : AppCompatActivity() {
                 R.id.menu_map -> navController.navigate(R.id.nav_map)
                 R.id.menu_profile -> navController.navigate(R.id.nav_profile)
             }
-
-            supportActionBar?.title = navController.currentDestination?.label
-
             true
         }
     }
