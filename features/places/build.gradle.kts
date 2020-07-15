@@ -8,10 +8,15 @@ plugins {
 apply(from = rootProject.file("buildSrc/androidDefaultConfig.gradle"))
 
 dependencies {
+    implementation(project(":libraries:common"))
     implementation(project(":libraries:ui_components"))
     implementation(project(":libraries:network"))
+    implementation(Dependencies.viewModelKtx)
+    implementation(Dependencies.liveDataKtx)
+    implementation(Dependencies.fragmentKtx)
     implementation(Dependencies.hilt)
+    implementation(Dependencies.hiltViewModel)
     kapt(Dependencies.hiltCompiler)
-
+    kapt(Dependencies.hiltExtensionCompiler)
     testImplementation(project(":libraries:testing"))
 }

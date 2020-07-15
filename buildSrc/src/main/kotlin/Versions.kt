@@ -11,10 +11,15 @@ object Versions {
     const val kotlin = "1.3.72"
 
     const val hilt = "2.28.1-alpha"
+    const val hiltViewModel = "1.0.0-alpha01"
 
-    const val coreKotlinExtensions = "1.3.0"
+    const val coreKtx = "1.3.0"
 
     const val navigation = "2.3.0"
+
+    const val viewModelKtx = "2.2.0"
+    const val liveDataKtx = "2.2.0"
+    const val fragmentKtx = "1.2.5"
 
     const val appCompat = "1.2.0-rc01"
     const val material = "1.2.0-beta01"

@@ -2,13 +2,52 @@ package somegoodplaces.features.places.ui.main
 
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.observe
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.places_fragment_main.*
 import somegoodplaces.features.places.R
+import somegoodplaces.libraries.common.ViewState
+import somegoodplaces.libraries.ui_components.BaseFragment
 
 @AndroidEntryPoint
-class PlacesMainFragment : Fragment(R.layout.places_fragment_main) {
+class PlacesMainFragment : BaseFragment(R.layout.places_fragment_main) {
+
+    private val viewModel by viewModels<PlacesMainViewModel>()
+
+    private val adapter: PlacesAdapter by lazy {
+        PlacesAdapter { /* TODO put onClick*/ }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupView()
+        setupObservables()
+    }
+
+    private fun setupView() {
+        recyclerView.adapter = adapter
+    }
+
+    private fun setupObservables() {
+        viewModel.places.observe(this.viewLifecycleOwner) {
+            var shouldHideLoading = true
+            when (it) {
+                is ViewState.Success -> adapter.submitList(it.data)
+                is ViewState.Error -> showMessage(
+                    it.errorMessage ?: getString(R.string.places_generic_error)
+                )
+                is ViewState.Loading -> shouldHideLoading = false
+            }
+
+            if (shouldHideLoading) {
+                loadingDialog.dismiss()
+            } else {
+                if (!loadingDialog.isShowing) {
+                    loadingDialog.show()
+                }
+            }
+        }
+
     }
 }

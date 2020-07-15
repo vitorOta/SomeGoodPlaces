@@ -25,7 +25,9 @@ dependencies {
     implementation(Dependencies.navigationUi)
 
     implementation(Dependencies.hilt)
+    implementation(Dependencies.hiltViewModel)
     kapt(Dependencies.hiltCompiler)
+    kapt(Dependencies.hiltExtensionCompiler)
 
     testImplementation(TestDependencies.jUnit)
     androidTestImplementation(TestDependencies.androidx_test_ext_junit)

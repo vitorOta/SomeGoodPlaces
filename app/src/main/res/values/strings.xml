@@ -4,4 +4,6 @@
     <string name="menu_item_home">Home</string>
     <string name="menu_item_map">Map</string>
     <string name="menu_item_profile">Profile</string>
+
+    <string name="placeholder_not_implemented">Not implemented</string>
 </resources>

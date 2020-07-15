@@ -4,11 +4,13 @@ import somegoodplaces.features.places.data.PlacesRepository
 import somegoodplaces.features.places.model.Place
 import somegoodplaces.features.places.model.PlaceDetails
 import somegoodplaces.libraries.network.RequestManager
+import javax.inject.Inject
 
-internal class PlacesOnlineRepository(
-    private val mapper: PlacesSchemasToDomainMapper,
+internal class PlacesOnlineRepository @Inject constructor(
     private val api: PlacesApi
 ) : PlacesRepository {
+    private val mapper = PlacesSchemasToDomainMapper()
+
     override suspend fun list(): List<Place> {
         return RequestManager.requestFromApi { api.list() }?.listLocations?.let {
             it.map {

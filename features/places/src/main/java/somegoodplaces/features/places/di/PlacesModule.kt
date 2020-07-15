@@ -8,6 +8,10 @@ import dagger.hilt.android.components.ActivityComponent
 import somegoodplaces.features.places.data.PlacesRepository
 import somegoodplaces.features.places.data.online.PlacesApi
 import somegoodplaces.features.places.data.online.PlacesOnlineRepository
+import somegoodplaces.features.places.usecase.GetPlaceDetailsUseCase
+import somegoodplaces.features.places.usecase.GetPlaceDetailsUseCaseImpl
+import somegoodplaces.features.places.usecase.ListPlacesUseCase
+import somegoodplaces.features.places.usecase.ListPlacesUseCaseImpl
 import somegoodplaces.libraries.network.ApiClientBuilder
 
 
@@ -16,6 +20,13 @@ import somegoodplaces.libraries.network.ApiClientBuilder
 abstract class PlacesBindsModule {
     @Binds
     internal abstract fun bindPlacesRepository(repo: PlacesOnlineRepository): PlacesRepository
+
+    @Binds
+    internal abstract fun bindListPlaceUseCase(useCase: ListPlacesUseCaseImpl): ListPlacesUseCase
+
+    @Binds
+    internal abstract fun bindGetPlaceDetailsUseCase(useCase: GetPlaceDetailsUseCaseImpl)
+            : GetPlaceDetailsUseCase
 }
 
 @Module
