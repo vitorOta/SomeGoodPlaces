@@ -17,11 +17,10 @@ internal class PlacesMainViewModel @ViewModelInject constructor(
     //TODO put flow logic in usecase (or repository)
     val places = liveData<ViewState<List<Place>>> {
         emit(ViewState.Loading())
-        try {
-            val data = listPlacesUseCase.list()
-            emit(ViewState.Success(data))
-        } catch (e: Exception) {
-            emit(ViewState.Error())
-        }
+        val result = kotlin.runCatching {
+            ViewState.Success(listPlacesUseCase.list()) as ViewState<List<Place>>
+        }.getOrElse { ViewState.Error() }
+
+        emit(result)
     }
 }
