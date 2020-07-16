@@ -8,6 +8,7 @@ import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.places_fragment_main.*
 import somegoodplaces.features.places.R
+import somegoodplaces.features.places.model.Place
 import somegoodplaces.libraries.common.ViewState
 import somegoodplaces.libraries.ui_components.BaseFragment
 
@@ -17,7 +18,7 @@ class PlacesMainFragment : BaseFragment(R.layout.places_fragment_main) {
     private val viewModel by viewModels<PlacesMainViewModel>()
 
     private val adapter: PlacesAdapter by lazy {
-        PlacesAdapter { navigateToDetails(it.id) }
+        PlacesAdapter { navigateToDetails(it) }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -51,8 +52,9 @@ class PlacesMainFragment : BaseFragment(R.layout.places_fragment_main) {
         }
     }
 
-    private fun navigateToDetails(placeId: Int) {
-        val directions = PlacesMainFragmentDirections.placesNavActionMainToDetails(placeId)
+    private fun navigateToDetails(place: Place) {
+        val directions =
+            PlacesMainFragmentDirections.placesNavActionMainToDetails(place.id, place.image)
         findNavController().navigate(directions)
     }
 }

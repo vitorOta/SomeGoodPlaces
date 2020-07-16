@@ -20,6 +20,7 @@ class PlaceDetailsFragment : BaseFragment(R.layout.places_fragment_details) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        imageToolbar.loadImage(args.imageUrl)
         setupObservables()
         viewModel.init(args.placeId)
     }

@@ -21,5 +21,8 @@
         <argument
             android:name="placeId"
             app:argType="integer" />
+        <argument
+            android:name="imageUrl"
+            app:argType="string" />
     </fragment>
 </navigation>
