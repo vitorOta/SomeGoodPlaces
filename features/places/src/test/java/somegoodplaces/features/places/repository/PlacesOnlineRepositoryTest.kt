@@ -33,7 +33,7 @@ class PlacesOnlineRepositoryTest {
         val url = server.url("").toString()
 
         api = ApiClientBuilder.createApi(PlacesApi::class.java, url)
-        repo = PlacesOnlineRepository(mapper, api)
+        repo = PlacesOnlineRepository(api)
     }
 
     @After
@@ -81,6 +81,24 @@ class PlacesOnlineRepositoryTest {
             mapper.placeDetailsSchemaToDomain(gsonDefault.fromJson(jsonResponse))
         assertEquals(expectedResponse, response)
     }
+
+    @Test
+    fun `getDetails api returns different model response but repo converts successfully`() =
+        runBlocking {
+            //assert
+            val expectedJsonResponse = loadJsonFromResources("getPlaceDetails.json")
+            val actualJsonResponse = loadJsonFromResources("getPlaceDetailsDifferent.json")
+            server.enqueueResponse(200, actualJsonResponse)
+            server.enqueueResponse(200, actualJsonResponse)
+
+            //act
+            val response = repo.getDetails(1)
+
+            //assert
+            val expectedResponse =
+                mapper.placeDetailsSchemaToDomain(gsonDefault.fromJson(expectedJsonResponse))
+            assertEquals(expectedResponse, response)
+        }
 
     @Test(expected = ApiException::class)
     fun `when getDetails and api returns 500 then throws ApiException`() = runBlocking {

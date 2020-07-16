@@ -23,7 +23,7 @@ internal class PlacesSchemasToDomainMapper {
         type = schema.type,
         id = schema.id,
         about = schema.about,
-        schedule = schema.schedule.first().toDomain(),
+        schedule = schema.schedule.toDomain(),
         phone = schema.phone,
         address = schema.address
     )
@@ -38,5 +38,6 @@ internal class PlacesSchemasToDomainMapper {
         saturday = saturday.toDomain()
     )
 
-    private fun ScheduleDaySchema.toDomain() = ScheduleDay(open = this.open, close = this.close)
+    private fun ScheduleDaySchema?.toDomain() =
+        this?.let { ScheduleDay(open = it.open, close = it.close) }
 }

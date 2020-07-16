@@ -9,10 +9,12 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.places_item_place.view.*
 import somegoodplaces.features.places.R
 import somegoodplaces.features.places.model.Place
+import somegoodplaces.libraries.common.extensions.isEven
 import somegoodplaces.libraries.ui_components.extensions.loadImage
 
 internal class PlacesAdapter(private val onClick: (Place) -> Unit) :
     ListAdapter<Place, PlacesAdapter.ViewHolder>(DIFF_CALLBACK) {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.places_item_place, parent, false)
@@ -21,12 +23,16 @@ internal class PlacesAdapter(private val onClick: (Place) -> Unit) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
+
+        //workaround to simulate diferent image heights
+        val imageHeight = if (item.id.isEven) 300 else 500
+
         with(holder.itemView) {
             name.text = item.name
             type.text = item.type
             ratingBar.rating = item.review
             rating.text = String.format("%.1f", item.review)
-            imgPlace.loadImage(item.image)
+            imgPlace.loadImage(item.image, imageHeight)
             setOnClickListener { onClick(item) }
         }
     }

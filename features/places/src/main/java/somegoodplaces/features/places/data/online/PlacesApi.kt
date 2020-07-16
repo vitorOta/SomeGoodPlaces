@@ -5,6 +5,7 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import somegoodplaces.features.places.data.online.schemas.ListResponse
 import somegoodplaces.features.places.data.online.schemas.PlaceDetailsSchema
+import somegoodplaces.features.places.data.online.schemas.PlaceDetailsSchema2
 
 internal interface PlacesApi {
     @GET("locations")
@@ -12,4 +13,7 @@ internal interface PlacesApi {
 
     @GET("locations/{id}")
     suspend fun getDetails(@Path("id") id: Int): Response<PlaceDetailsSchema>
+
+    @GET("locations/{id}")
+    suspend fun getDetails2(@Path("id") id: Int): Response<PlaceDetailsSchema2>
 }

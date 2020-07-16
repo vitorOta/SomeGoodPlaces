@@ -4,17 +4,17 @@ import com.google.gson.annotations.SerializedName
 
 internal class ScheduleSchema(
     @SerializedName("sunday")
-    val sunday: ScheduleDaySchema,
+    val sunday: ScheduleDaySchema?,
     @SerializedName("monday")
-    val monday: ScheduleDaySchema,
+    val monday: ScheduleDaySchema?,
     @SerializedName("tuesday")
-    val tuesday: ScheduleDaySchema,
+    val tuesday: ScheduleDaySchema?,
     @SerializedName("wednesday")
-    val wednesday: ScheduleDaySchema,
+    val wednesday: ScheduleDaySchema?,
     @SerializedName("thursday")
-    val thursday: ScheduleDaySchema,
+    val thursday: ScheduleDaySchema?,
     @SerializedName("friday")
-    val friday: ScheduleDaySchema,
+    val friday: ScheduleDaySchema?,
     @SerializedName("saturday")
-    val saturday: ScheduleDaySchema
+    val saturday: ScheduleDaySchema?
 )

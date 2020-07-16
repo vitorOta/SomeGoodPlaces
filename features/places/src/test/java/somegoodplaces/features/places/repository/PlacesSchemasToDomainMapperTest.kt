@@ -37,36 +37,34 @@ class PlacesSchemasToDomainMapperTest {
             review = dummyPlaceDetails.review,
             type = dummyPlaceDetails.type,
             about = dummyPlaceDetails.about,
-            schedule = listOf(
-                ScheduleSchema(
-                    sunday = ScheduleDaySchema(
-                        open = dummyPlaceDetails.schedule.sunday.open,
-                        close = dummyPlaceDetails.schedule.sunday.close
-                    ),
-                    monday = ScheduleDaySchema(
-                        open = dummyPlaceDetails.schedule.monday.open,
-                        close = dummyPlaceDetails.schedule.monday.close
-                    ),
-                    tuesday = ScheduleDaySchema(
-                        open = dummyPlaceDetails.schedule.tuesday.open,
-                        close = dummyPlaceDetails.schedule.tuesday.close
-                    ),
-                    wednesday = ScheduleDaySchema(
-                        open = dummyPlaceDetails.schedule.wednesday.open,
-                        close = dummyPlaceDetails.schedule.wednesday.close
-                    ),
-                    thursday = ScheduleDaySchema(
-                        open = dummyPlaceDetails.schedule.thursday.open,
-                        close = dummyPlaceDetails.schedule.thursday.close
-                    ),
-                    friday = ScheduleDaySchema(
-                        open = dummyPlaceDetails.schedule.friday.open,
-                        close = dummyPlaceDetails.schedule.friday.close
-                    ),
-                    saturday = ScheduleDaySchema(
-                        open = dummyPlaceDetails.schedule.saturday.open,
-                        close = dummyPlaceDetails.schedule.saturday.close
-                    )
+            schedule = ScheduleSchema(
+                sunday = ScheduleDaySchema(
+                    open = dummyPlaceDetails.schedule.sunday!!.open,
+                    close = dummyPlaceDetails.schedule.sunday!!.close
+                ),
+                monday = ScheduleDaySchema(
+                    open = dummyPlaceDetails.schedule.monday!!.open,
+                    close = dummyPlaceDetails.schedule.monday!!.close
+                ),
+                tuesday = ScheduleDaySchema(
+                    open = dummyPlaceDetails.schedule.tuesday!!.open,
+                    close = dummyPlaceDetails.schedule.tuesday!!.close
+                ),
+                wednesday = ScheduleDaySchema(
+                    open = dummyPlaceDetails.schedule.wednesday!!.open,
+                    close = dummyPlaceDetails.schedule.wednesday!!.close
+                ),
+                thursday = ScheduleDaySchema(
+                    open = dummyPlaceDetails.schedule.thursday!!.open,
+                    close = dummyPlaceDetails.schedule.thursday!!.close
+                ),
+                friday = ScheduleDaySchema(
+                    open = dummyPlaceDetails.schedule.friday!!.open,
+                    close = dummyPlaceDetails.schedule.friday!!.close
+                ),
+                saturday = ScheduleDaySchema(
+                    open = dummyPlaceDetails.schedule.saturday!!.open,
+                    close = dummyPlaceDetails.schedule.saturday!!.close
                 )
             ),
             phone = dummyPlaceDetails.phone,

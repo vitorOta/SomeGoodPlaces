@@ -1,6 +1,9 @@
 package somegoodplaces.features.places.data.online
 
+import com.google.gson.JsonSyntaxException
 import somegoodplaces.features.places.data.PlacesRepository
+import somegoodplaces.features.places.data.online.schemas.PlaceDetailsSchema
+import somegoodplaces.features.places.data.online.schemas.PlaceDetailsSchema2
 import somegoodplaces.features.places.model.Place
 import somegoodplaces.features.places.model.PlaceDetails
 import somegoodplaces.libraries.network.RequestManager
@@ -23,8 +26,28 @@ internal class PlacesOnlineRepository @Inject constructor(
     }
 
     override suspend fun getDetails(id: Int): PlaceDetails {
-        return RequestManager.requestFromApi { api.getDetails(id) }
-            ?.let { mapper.placeDetailsSchemaToDomain(it) }
+        val response = try {
+            RequestManager.requestFromApi {
+                api.getDetails(id)
+            }
+        } catch (e: JsonSyntaxException) {
+            RequestManager.requestFromApi {
+                api.getDetails2(id)
+            }?.toOriginal()
+        }
+
+        return response?.let { mapper.placeDetailsSchemaToDomain(it) }
             ?: throw NullPointerException()
     }
+
+    private fun PlaceDetailsSchema2.toOriginal() = PlaceDetailsSchema(
+        id = id,
+        name = name,
+        review = review,
+        type = type,
+        about = about,
+        schedule = schedule.first(),
+        phone = phone,
+        address = address
+    )
 }
