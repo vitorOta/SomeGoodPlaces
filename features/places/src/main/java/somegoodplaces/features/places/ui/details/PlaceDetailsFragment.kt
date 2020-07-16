@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.navigation.ui.NavigationUI
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.places_fragment_details.*
 import somegoodplaces.features.places.R
@@ -18,11 +20,18 @@ class PlaceDetailsFragment : BaseFragment(R.layout.places_fragment_details) {
     private val args: PlaceDetailsFragmentArgs by navArgs()
     private val viewModel: PlaceDetailsViewModel by viewModels()
 
+    private val navController by lazy { findNavController() }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        imageToolbar.loadImage(args.imageUrl)
+        setupView()
         setupObservables()
         viewModel.init(args.placeId)
+    }
+
+    private fun setupView() {
+        imageToolbar.loadImage(args.imageUrl)
+        NavigationUI.setupWithNavController(toolbar, navController)
     }
 
     private fun setupObservables() {
@@ -32,7 +41,7 @@ class PlaceDetailsFragment : BaseFragment(R.layout.places_fragment_details) {
                 is ViewState.Success -> updateView(it.data)
                 is ViewState.Error -> showMessage(
                     it.errorMessage ?: getString(R.string.places_generic_error)
-                )
+                ) { _, _ -> navController.navigateUp() }
                 is ViewState.Loading -> shouldHideLoading = false
             }
 

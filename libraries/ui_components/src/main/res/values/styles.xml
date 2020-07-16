@@ -17,4 +17,13 @@
         <!--        <item name="android:progressDrawable">@drawable/rating_progress_drawable</item>-->
         <item name="android:stepSize">1</item>
     </style>
+
+    <style name="AppTheme.ToolbarTextAppearance">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="AppTheme.ToolbarTextAppearance.Expanded">
+        <item name="android:textSize">32sp</item>
+    </style>
 </resources>

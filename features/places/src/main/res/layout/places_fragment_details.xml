@@ -14,6 +14,8 @@
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
             app:contentScrim="?attr/colorPrimary"
+            app:collapsedTitleTextAppearance="@style/AppTheme.ToolbarTextAppearance"
+            app:expandedTitleTextAppearance="@style/AppTheme.ToolbarTextAppearance.Expanded"
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
             <ImageView

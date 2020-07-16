@@ -1,5 +1,6 @@
 package somegoodplaces.libraries.ui_components
 
+import android.content.DialogInterface
 import androidx.annotation.LayoutRes
 import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
@@ -14,12 +15,20 @@ abstract class BaseFragment : Fragment {
         requireContext().createLoadingDialog()
     }
 
-    fun showMessage(message: String, isCancelable: Boolean = true) {
-        requireContext().createAlertDialog(message, isCancelable).show()
+    fun showMessage(
+        message: String,
+        isCancelable: Boolean = true,
+        positiveButtonListener: ((DialogInterface, Int) -> Unit)? = null
+    ) {
+        requireContext().createAlertDialog(message, isCancelable, positiveButtonListener).show()
     }
 
-    fun showMessage(@StringRes message: Int, isCancelable: Boolean = true) {
-        showMessage(getString(message), isCancelable)
+    fun showMessage(
+        @StringRes message: Int,
+        isCancelable: Boolean = true,
+        positiveButtonListener: ((DialogInterface, Int) -> Unit)? = null
+    ) {
+        showMessage(getString(message), isCancelable, positiveButtonListener)
     }
 
 }

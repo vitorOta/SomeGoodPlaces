@@ -31,7 +31,7 @@ internal class PlaceDetailsViewModel @ViewModelInject constructor(
             _details.value = kotlin.runCatching {
                 ViewState.Success(getPlaceDetailsUseCase.getDetails(placeId))
                         as ViewState<PlaceDetails>
-            }.getOrElse { ViewState.Error("${it}- ${it.message}") }
+            }.getOrElse { ViewState.Error() }
         }
     }
 }
