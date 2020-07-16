@@ -2,18 +2,16 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/nav_places">
+    app:startDestination="@id/places_nav_graph">
 
     <fragment
-        android:id="@+id/nav_places"
-        android:name="somegoodplaces.features.places.ui.main.PlacesMainFragment"
-        android:label="@string/menu_item_home" />
-    <fragment
-        android:id="@+id/nav_map"
+        android:id="@+id/nav_menu_map"
         android:name="com.vitorota.somegoodplaces.ui.MapFragment"
         android:label="@string/menu_item_map" />
     <fragment
-        android:id="@+id/nav_profile"
+        android:id="@+id/nav_menu_profile"
         android:name="com.vitorota.somegoodplaces.ui.ProfileFragment"
         android:label="@string/menu_item_profile" />
+
+    <include app:graph="@navigation/places_nav_graph" />
 </navigation>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/places_nav_graph"
+    app:startDestination="@id/places_nav_main"
+    tools:ignore="UnusedNavigation">
+
+    <fragment
+        android:id="@+id/places_nav_main"
+        android:name="somegoodplaces.features.places.ui.main.PlacesMainFragment"
+        android:label="PlacesMainFragment">
+        <action
+            android:id="@+id/places_nav_action_main_to_details"
+            app:destination="@id/places_nav_details" />
+    </fragment>
+    <fragment
+        android:id="@+id/places_nav_details"
+        android:name="somegoodplaces.features.places.ui.details.PlaceDetailsFragment"
+        android:label="PlaceDetailsFragment">
+        <argument
+            android:name="placeId"
+            app:argType="integer" />
+    </fragment>
+</navigation>

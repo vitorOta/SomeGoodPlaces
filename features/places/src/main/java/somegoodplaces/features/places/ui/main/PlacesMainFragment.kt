@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
+import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.places_fragment_main.*
 import somegoodplaces.features.places.R
@@ -16,7 +17,7 @@ class PlacesMainFragment : BaseFragment(R.layout.places_fragment_main) {
     private val viewModel by viewModels<PlacesMainViewModel>()
 
     private val adapter: PlacesAdapter by lazy {
-        PlacesAdapter { /* TODO put onClick*/ }
+        PlacesAdapter { navigateToDetails(it.id) }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -48,6 +49,10 @@ class PlacesMainFragment : BaseFragment(R.layout.places_fragment_main) {
                 }
             }
         }
+    }
 
+    private fun navigateToDetails(placeId: Int) {
+        val directions = PlacesMainFragmentDirections.placesNavActionMainToDetails(placeId)
+        findNavController().navigate(directions)
     }
 }

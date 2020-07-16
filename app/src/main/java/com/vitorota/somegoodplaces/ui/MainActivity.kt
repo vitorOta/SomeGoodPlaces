@@ -3,6 +3,7 @@ package com.vitorota.somegoodplaces.ui
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI
 import com.vitorota.somegoodplaces.R
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
@@ -19,13 +20,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupNavigation() {
-        bottomNav.setOnNavigationItemSelectedListener {
-            when (it.itemId) {
-                R.id.menu_home -> navController.navigate(R.id.nav_places)
-                R.id.menu_map -> navController.navigate(R.id.nav_map)
-                R.id.menu_profile -> navController.navigate(R.id.nav_profile)
-            }
-            true
-        }
+        NavigationUI.setupWithNavController(bottomNav, navController)
     }
 }

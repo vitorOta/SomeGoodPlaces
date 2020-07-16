@@ -11,6 +11,7 @@ buildscript {
         classpath PluginDeps.androidGradlePlugin
         classpath PluginDeps.kotlinGradlePlugin
         classpath PluginDeps.hiltGradlePlugin
+        classpath PluginDeps.navSafeArgsPlugin
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
