@@ -5,6 +5,7 @@ plugins {
 apply(from = rootProject.file("buildSrc/androidDefaultConfig.gradle"))
 
 dependencies {
+    implementation(Dependencies.liveDataKtx)
     api(TestDependencies.jUnit)
     api(TestDependencies.androidx_test_ext_junit)
     api(TestDependencies.mockk)

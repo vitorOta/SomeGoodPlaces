@@ -17,8 +17,7 @@ object Versions {
 
     const val navigation = "2.3.0"
 
-    const val viewModelKtx = "2.2.0"
-    const val liveDataKtx = "2.2.0"
+    const val lifecycle = "2.2.0"
     const val fragmentKtx = "1.2.5"
 
     const val appCompat = "1.2.0-rc01"
