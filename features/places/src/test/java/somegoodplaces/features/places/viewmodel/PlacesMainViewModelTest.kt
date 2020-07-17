@@ -11,7 +11,7 @@ import somegoodplaces.features.places.dummyPlace
 import somegoodplaces.features.places.model.Place
 import somegoodplaces.features.places.ui.main.PlacesMainViewModel
 import somegoodplaces.features.places.usecase.ListPlacesUseCase
-import somegoodplaces.libraries.common.RequestState
+import somegoodplaces.libraries.common.ViewState
 import somegoodplaces.libraries.testing.BaseViewModelTest
 
 class PlacesMainViewModelTest : BaseViewModelTest() {
@@ -30,28 +30,28 @@ class PlacesMainViewModelTest : BaseViewModelTest() {
     fun `when useCase returns successfully then places is Loading and then Success`() {
         val expected = listOf(dummyPlace)
         coEvery { useCase.list() } returns expected
-        val mockObserver = mockObserver<RequestState<List<Place>>>()
+        val mockObserver = mockObserver<ViewState<List<Place>>>()
 
         viewModel.places.observeForever(mockObserver)
 
-        assertEquals(RequestState.Success(expected), viewModel.places.value)
+        assertEquals(ViewState.Success(expected), viewModel.places.value)
         verifyOrder {
-            mockObserver.onChanged(RequestState.Loading)
-            mockObserver.onChanged(RequestState.Success(expected))
+            mockObserver.onChanged(ViewState.Loading)
+            mockObserver.onChanged(ViewState.Success(expected))
         }
     }
 
     @Test
     fun `when useCase throws an Exception then places is Loading and then Error`() {
         coEvery { useCase.list() } throws Exception()
-        val mockObserver = mockObserver<RequestState<List<Place>>>()
+        val mockObserver = mockObserver<ViewState<List<Place>>>()
 
         viewModel.places.observeForever(mockObserver)
 
-        assertEquals(RequestState.Error(), viewModel.places.value)
+        assertEquals(ViewState.Error(), viewModel.places.value)
         verifyOrder {
-            mockObserver.onChanged(RequestState.Loading)
-            mockObserver.onChanged(RequestState.Error())
+            mockObserver.onChanged(ViewState.Loading)
+            mockObserver.onChanged(ViewState.Error())
         }
     }
 }

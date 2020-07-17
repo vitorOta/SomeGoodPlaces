@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.places_layout_details_toolbar.*
 import somegoodplaces.features.places.R
 import somegoodplaces.features.places.model.PlaceDetails
 import somegoodplaces.features.places.ui.details.adapters.PhotosAdapter
-import somegoodplaces.libraries.common.RequestState
+import somegoodplaces.libraries.common.ViewState
 import somegoodplaces.libraries.common.extensions.toString
 import somegoodplaces.libraries.ui_components.BaseFragment
 import somegoodplaces.libraries.ui_components.extensions.loadImage
@@ -45,11 +45,11 @@ class PlaceDetailsFragment : BaseFragment(R.layout.places_fragment_details) {
         viewModel.details.observe(this.viewLifecycleOwner) {
             var shouldHideLoading = true
             when (it) {
-                is RequestState.Success -> updateView(it.data)
-                is RequestState.Error -> showMessage(
+                is ViewState.Success -> updateView(it.data)
+                is ViewState.Error -> showMessage(
                     it.errorMessage ?: getString(R.string.places_generic_error)
                 ) { _, _ -> navController.navigateUp() }
-                is RequestState.Loading -> shouldHideLoading = false
+                is ViewState.Loading -> shouldHideLoading = false
             }
 
             if (shouldHideLoading) {

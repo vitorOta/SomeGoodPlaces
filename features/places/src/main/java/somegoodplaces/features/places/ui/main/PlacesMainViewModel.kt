@@ -5,17 +5,17 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import somegoodplaces.features.places.model.Place
 import somegoodplaces.features.places.usecase.ListPlacesUseCase
-import somegoodplaces.libraries.common.RequestState
+import somegoodplaces.libraries.common.ViewState
 
 internal class PlacesMainViewModel @ViewModelInject constructor(
     private val listPlacesUseCase: ListPlacesUseCase
 ) : ViewModel() {
 
     val places = liveData {
-        emit(RequestState.Loading)
+        emit(ViewState.Loading)
         val result = kotlin.runCatching {
-            RequestState.Success(listPlacesUseCase.list()) as RequestState<List<Place>>
-        }.getOrElse { RequestState.Error() }
+            ViewState.Success(listPlacesUseCase.list()) as ViewState<List<Place>>
+        }.getOrElse { ViewState.Error() }
 
         emit(result)
     }
