@@ -1,4 +1,4 @@
-package somegoodplaces.features.places.data.online.schemas
+package somegoodplaces.features.places.data.online.schemas.places
 
 import com.google.gson.annotations.SerializedName
 

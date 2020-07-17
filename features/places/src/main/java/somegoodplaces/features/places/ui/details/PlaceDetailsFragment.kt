@@ -8,11 +8,13 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.navigation.ui.NavigationUI
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.places_layout_details_comments.*
 import kotlinx.android.synthetic.main.places_layout_details_photos_and_about.*
 import kotlinx.android.synthetic.main.places_layout_details_schedule_and_address.*
 import kotlinx.android.synthetic.main.places_layout_details_toolbar.*
 import somegoodplaces.features.places.R
 import somegoodplaces.features.places.model.PlaceDetails
+import somegoodplaces.features.places.ui.details.adapters.CommentsAdapter
 import somegoodplaces.features.places.ui.details.adapters.PhotosAdapter
 import somegoodplaces.libraries.common.ViewState
 import somegoodplaces.libraries.common.extensions.toString
@@ -27,6 +29,7 @@ internal class PlaceDetailsFragment : BaseFragment(R.layout.places_fragment_deta
     private val navController by lazy { findNavController() }
 
     private val photosAdapter by lazy { PhotosAdapter() }
+    private val commentsAdapter by lazy { CommentsAdapter() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -39,6 +42,7 @@ internal class PlaceDetailsFragment : BaseFragment(R.layout.places_fragment_deta
         NavigationUI.setupWithNavController(toolbar, navController)
         imageToolbar.loadImage(args.imageUrl)
         rvPhotos.adapter = photosAdapter
+        rvComments.adapter = commentsAdapter
     }
 
     private fun setupObservables() {
@@ -67,10 +71,14 @@ internal class PlaceDetailsFragment : BaseFragment(R.layout.places_fragment_deta
         ratingBar.rating = details.review
         rating.text = details.review.toString(1)
         imageToolbar.loadImage(details.image)
+
         photosAdapter.submitList(details.photos)
+
         tvAbout.text = details.about
         tvSchedule.text = viewModel.formatSchedule(details.schedule).getValue(requireContext())
         tvPhone.text = details.phone
         tvAddress.text = details.address
+
+        commentsAdapter.submitList(details.comments)
     }
 }

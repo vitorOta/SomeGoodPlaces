@@ -1,9 +1,6 @@
 package somegoodplaces.features.places
 
-import somegoodplaces.features.places.model.Place
-import somegoodplaces.features.places.model.PlaceDetails
-import somegoodplaces.features.places.model.Schedule
-import somegoodplaces.features.places.model.ScheduleDay
+import somegoodplaces.features.places.model.*
 
 internal val dummySchedule = Schedule(
     sunday = ScheduleDay(open = "01:00", close = "10:00"),
@@ -14,6 +11,10 @@ internal val dummySchedule = Schedule(
     friday = ScheduleDay(open = "06:00", close = "15:00"),
     saturday = ScheduleDay(open = "07:00", close = "16:00")
 )
+
+internal val dummyComment =
+    Comment(id = 1, name = "Name", email = "email@a.com", body = "body dolor sit amet")
+
 internal val dummyPlace = Place(id = 1, name = "Place name", review = 0.0f, type = "Type")
 internal val dummyPlaceDetails = PlaceDetails(
     id = 1,
@@ -23,5 +24,6 @@ internal val dummyPlaceDetails = PlaceDetails(
     about = "about",
     schedule = dummySchedule,
     phone = "319455156",
-    address = "address"
+    address = "address",
+    comments = listOf(dummyComment)
 )

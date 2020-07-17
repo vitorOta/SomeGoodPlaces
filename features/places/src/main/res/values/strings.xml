@@ -6,6 +6,7 @@
     <string name="places_details_photos">Photos</string>
     <string name="places_details_about">About</string>
     <string name="places_details_reviews">Reviews</string>
+    <string name="places_details_comments">Comments</string>
     <string name="places_details_share">Share</string>
     <string name="places_details_schedule_description">mon to fri: %1$s to %2$s\nsat and fri: %3$s to %4$s</string>
 

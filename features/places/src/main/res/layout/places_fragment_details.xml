@@ -32,6 +32,10 @@
             <include layout="@layout/places_layout_details_photos_and_about" />
 
             <include layout="@layout/places_layout_details_schedule_and_address" />
+
+            <include layout="@layout/places_layout_details_comments" />
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>

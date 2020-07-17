@@ -11,7 +11,8 @@ fun ImageView.loadImage(
     imageUrl: String,
     roundedCorners: Int? = null,
     @DrawableRes placeholderRes: Int? = null,
-    @DrawableRes errorRes: Int? = null
+    @DrawableRes errorRes: Int? = null,
+    roundAsCircle: Boolean = false
 ) {
     Glide.with(this)
         .load(imageUrl)
@@ -19,6 +20,8 @@ fun ImageView.loadImage(
             errorRes?.let { error(it) }
             placeholderRes?.let { placeholder(it) }
             roundedCorners?.let { transform(RoundedCorners(it.dp.px)) }
+
+            roundAsCircle.takeIf { it }?.run { circleCrop() }
         }
         .into(this)
 }

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="@layout/places_fragment_details">
+
+    <TextView
+        android:id="@+id/tvComments"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/places_details_comments"
+        android:textAppearance="@style/AppTheme.HeaderTitle"
+        app:layout_constraintEnd_toStartOf="@+id/glEnd"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/glStart"
+        app:layout_constraintTop_toBottomOf="@id/tvAddress" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvComments"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:nestedScrollingEnabled="false"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintEnd_toStartOf="@+id/glEnd"
+        app:layout_constraintStart_toStartOf="@+id/glStart"
+        app:layout_constraintTop_toBottomOf="@id/tvComments"
+        tools:itemCount="5"
+        tools:listitem="@layout/places_item_comment" />
+
+</merge>

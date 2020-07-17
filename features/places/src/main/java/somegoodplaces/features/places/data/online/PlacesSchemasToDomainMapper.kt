@@ -1,13 +1,11 @@
 package somegoodplaces.features.places.data.online
 
-import somegoodplaces.features.places.data.online.schemas.PlaceDetailsSchema
-import somegoodplaces.features.places.data.online.schemas.PlaceSchema
-import somegoodplaces.features.places.data.online.schemas.ScheduleDaySchema
-import somegoodplaces.features.places.data.online.schemas.ScheduleSchema
-import somegoodplaces.features.places.model.Place
-import somegoodplaces.features.places.model.PlaceDetails
-import somegoodplaces.features.places.model.Schedule
-import somegoodplaces.features.places.model.ScheduleDay
+import somegoodplaces.features.places.data.online.schemas.jsonplaceholder.CommentSchema
+import somegoodplaces.features.places.data.online.schemas.places.PlaceDetailsSchema
+import somegoodplaces.features.places.data.online.schemas.places.PlaceSchema
+import somegoodplaces.features.places.data.online.schemas.places.ScheduleDaySchema
+import somegoodplaces.features.places.data.online.schemas.places.ScheduleSchema
+import somegoodplaces.features.places.model.*
 
 internal class PlacesSchemasToDomainMapper {
     fun placeSchemaToDomain(schema: PlaceSchema) = Place(
@@ -17,15 +15,24 @@ internal class PlacesSchemasToDomainMapper {
         type = schema.type
     )
 
-    fun placeDetailsSchemaToDomain(schema: PlaceDetailsSchema) = PlaceDetails(
-        name = schema.name,
-        review = schema.review,
-        type = schema.type,
-        id = schema.id,
-        about = schema.about,
-        schedule = schema.schedule.toDomain(),
-        phone = schema.phone,
-        address = schema.address
+    fun placeDetailsSchemaToDomain(schema: PlaceDetailsSchema, comments: List<CommentSchema>) =
+        PlaceDetails(
+            name = schema.name,
+            review = schema.review,
+            type = schema.type,
+            id = schema.id,
+            about = schema.about,
+            schedule = schema.schedule.toDomain(),
+            phone = schema.phone,
+            address = schema.address,
+            comments = comments.map { it.toDomain() }
+        )
+
+    private fun CommentSchema.toDomain() = Comment(
+        id = id,
+        name = name,
+        email = email,
+        body = body
     )
 
     private fun ScheduleSchema.toDomain() = Schedule(

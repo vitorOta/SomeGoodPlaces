@@ -6,6 +6,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ActivityComponent
 import somegoodplaces.features.places.data.PlacesRepository
+import somegoodplaces.features.places.data.online.JsonPlaceholderApi
 import somegoodplaces.features.places.data.online.PlacesApi
 import somegoodplaces.features.places.data.online.PlacesOnlineRepository
 import somegoodplaces.features.places.usecase.GetPlaceDetailsUseCase
@@ -34,4 +35,10 @@ abstract class PlacesBindsModule {
 class PlacesProvidesModule {
     @Provides
     internal fun providesPlacesApi() = ApiClientBuilder.createApi(PlacesApi::class.java)
+
+    @Provides
+    internal fun providesJsonPlaceholderApi() = ApiClientBuilder.createApi(
+        JsonPlaceholderApi::class.java,
+        baseUrl = "https://jsonplaceholder.typicode.com/"
+    )
 }

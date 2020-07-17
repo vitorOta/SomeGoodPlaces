@@ -8,7 +8,8 @@ internal data class PlaceDetails(
     val about: String,
     val schedule: Schedule,
     val phone: String,
-    val address: String
+    val address: String,
+    val comments: List<Comment>
 ) {
     val image = id.generateImageLink()
     val photos = (id * 10..id * 10 + 8).map { it.generateSquareImageLink() }
