@@ -11,5 +11,5 @@ internal data class PlaceDetails(
     val address: String
 ) {
     val image = id.generateBiggerImageLink()
-    val photos = (id * 10..id * 10 + 8).map { it.generateImageLink() }
+    val photos = (id * 10..id * 10 + 8).map { it.generateSquareImageLink() }
 }
