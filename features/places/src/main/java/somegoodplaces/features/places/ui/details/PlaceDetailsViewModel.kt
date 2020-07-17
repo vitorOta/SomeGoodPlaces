@@ -8,7 +8,7 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import somegoodplaces.features.places.model.PlaceDetails
 import somegoodplaces.features.places.usecase.GetPlaceDetailsUseCase
-import somegoodplaces.libraries.common.ViewState
+import somegoodplaces.libraries.common.RequestState
 
 internal class PlaceDetailsViewModel @ViewModelInject constructor(
     private val getPlaceDetailsUseCase: GetPlaceDetailsUseCase
@@ -16,8 +16,8 @@ internal class PlaceDetailsViewModel @ViewModelInject constructor(
 
     private var placeId: Int = -1
 
-    private val _details = MutableLiveData<ViewState<PlaceDetails>>()
-    val details: LiveData<ViewState<PlaceDetails>> = _details
+    private val _details = MutableLiveData<RequestState<PlaceDetails>>()
+    val details: LiveData<RequestState<PlaceDetails>> = _details
 
     fun init(placeId: Int) {
         if (this.placeId == placeId) return
@@ -27,11 +27,11 @@ internal class PlaceDetailsViewModel @ViewModelInject constructor(
 
     private fun fetchDetails() {
         viewModelScope.launch {
-            _details.value = ViewState.Loading()
+            _details.value = RequestState.Loading
             _details.value = kotlin.runCatching {
-                ViewState.Success(getPlaceDetailsUseCase.getDetails(placeId))
-                        as ViewState<PlaceDetails>
-            }.getOrElse { ViewState.Error() }
+                RequestState.Success(getPlaceDetailsUseCase.getDetails(placeId))
+                        as RequestState<PlaceDetails>
+            }.getOrElse { RequestState.Error() }
         }
     }
 }

@@ -9,7 +9,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.places_fragment_main.*
 import somegoodplaces.features.places.R
 import somegoodplaces.features.places.model.Place
-import somegoodplaces.libraries.common.ViewState
+import somegoodplaces.libraries.common.RequestState
 import somegoodplaces.libraries.ui_components.BaseFragment
 
 @AndroidEntryPoint
@@ -35,11 +35,11 @@ class PlacesMainFragment : BaseFragment(R.layout.places_fragment_main) {
         viewModel.places.observe(this.viewLifecycleOwner) {
             var shouldHideLoading = true
             when (it) {
-                is ViewState.Success -> adapter.submitList(it.data)
-                is ViewState.Error -> showMessage(
+                is RequestState.Success -> adapter.submitList(it.data)
+                is RequestState.Error -> showMessage(
                     it.errorMessage ?: getString(R.string.places_generic_error)
                 )
-                is ViewState.Loading -> shouldHideLoading = false
+                is RequestState.Loading -> shouldHideLoading = false
             }
 
             if (shouldHideLoading) {
