@@ -69,7 +69,7 @@ class PlaceDetailsFragment : BaseFragment(R.layout.places_fragment_details) {
         imageToolbar.loadImage(details.image)
         photosAdapter.submitList(details.photos)
         tvAbout.text = details.about
-        tvSchedule.text = "${details.schedule}"
+        tvSchedule.text = viewModel.formatSchedule(details.schedule).getValue(requireContext())
         tvPhone.text = details.phone
         tvAddress.text = details.address
     }

@@ -6,9 +6,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
+import somegoodplaces.features.places.R
 import somegoodplaces.features.places.model.PlaceDetails
+import somegoodplaces.features.places.model.Schedule
 import somegoodplaces.features.places.usecase.GetPlaceDetailsUseCase
 import somegoodplaces.libraries.common.ViewState
+import somegoodplaces.libraries.ui_components.ViewModelString
 
 internal class PlaceDetailsViewModel @ViewModelInject constructor(
     private val getPlaceDetailsUseCase: GetPlaceDetailsUseCase
@@ -33,5 +36,21 @@ internal class PlaceDetailsViewModel @ViewModelInject constructor(
                         as ViewState<PlaceDetails>
             }.getOrElse { ViewState.Error() }
         }
+    }
+
+    fun formatSchedule(schedule: Schedule): ViewModelString {
+        //workaround...
+        val weekDay = schedule.monday ?: schedule.tuesday ?: schedule.wednesday ?: schedule.thursday
+        ?: schedule.friday
+
+        val weekend = schedule.saturday ?: schedule.sunday
+
+        return ViewModelString(
+            R.string.places_details_schedule_description,
+            weekDay?.open ?: " - ",
+            weekDay?.close ?: " - ",
+            weekend?.open ?: " - ",
+            weekend?.close ?: " - "
+        )
     }
 }
