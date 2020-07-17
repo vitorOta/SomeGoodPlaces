@@ -25,4 +25,5 @@ dependencies {
     kapt(Dependencies.hiltExtensionCompiler)
 
     testImplementation(project(":libraries:testing"))
+    androidTestImplementation(project(":libraries:testing"))
 }
