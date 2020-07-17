@@ -10,15 +10,21 @@
         <item name="fontFamily">@font/open_sans</item>
         <item name="android:fontFamily">@font/open_sans</item>
 
+
+        <item name="drawerArrowStyle">@style/AppTheme.DrawerArrowStyle</item>
         <item name="ratingBarStyle">@style/AppTheme.RatingBarStyle</item>
     </style>
 
+    <style name="AppTheme.DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="color">?attr/colorOnPrimary</item>
+    </style>
+
     <style name="AppTheme.RatingBarStyle" parent="Widget.AppCompat.RatingBar.Small">
-        <!--        <item name="android:progressDrawable">@drawable/rating_progress_drawable</item>-->
         <item name="android:stepSize">1</item>
         <item name="android:numStars">5</item>
         <item name="android:isIndicator">true</item>
     </style>
+
 
     <style name="AppTheme.ToolbarTextAppearance">
         <item name="android:textColor">@android:color/white</item>
