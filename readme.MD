@@ -6,6 +6,7 @@
 #### Architecture
 - Multi-modules
 - Clean architecture
+- MVVM
 
 #### Lib's
 - Retrofit
