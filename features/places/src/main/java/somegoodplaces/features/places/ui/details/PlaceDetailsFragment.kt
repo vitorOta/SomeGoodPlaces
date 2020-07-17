@@ -20,7 +20,7 @@ import somegoodplaces.libraries.ui_components.BaseFragment
 import somegoodplaces.libraries.ui_components.extensions.loadImage
 
 @AndroidEntryPoint
-class PlaceDetailsFragment : BaseFragment(R.layout.places_fragment_details) {
+internal class PlaceDetailsFragment : BaseFragment(R.layout.places_fragment_details) {
     private val args: PlaceDetailsFragmentArgs by navArgs()
     private val viewModel: PlaceDetailsViewModel by viewModels()
 

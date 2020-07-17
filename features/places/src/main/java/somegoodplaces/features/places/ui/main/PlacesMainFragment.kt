@@ -13,7 +13,7 @@ import somegoodplaces.libraries.common.ViewState
 import somegoodplaces.libraries.ui_components.BaseFragment
 
 @AndroidEntryPoint
-class PlacesMainFragment : BaseFragment(R.layout.places_fragment_main) {
+internal class PlacesMainFragment : BaseFragment(R.layout.places_fragment_main) {
 
     private val viewModel by viewModels<PlacesMainViewModel>()
 
