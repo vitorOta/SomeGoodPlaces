@@ -10,6 +10,6 @@ internal data class PlaceDetails(
     val phone: String,
     val address: String
 ) {
-    val image = id.generateBiggerImageLink()
+    val image = id.generateImageLink()
     val photos = (id * 10..id * 10 + 8).map { it.generateSquareImageLink() }
 }
