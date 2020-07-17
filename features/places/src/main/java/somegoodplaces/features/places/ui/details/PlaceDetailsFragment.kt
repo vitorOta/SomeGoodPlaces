@@ -66,7 +66,7 @@ class PlaceDetailsFragment : BaseFragment(R.layout.places_fragment_details) {
         toolbar.title = details.name
         ratingBar.rating = details.review
         rating.text = details.review.toString(1)
-        imageToolbar.loadImage(details.image, placeholderRes = R.drawable.ic_image)
+        imageToolbar.loadImage(details.image)
         photosAdapter.submitList(details.photos)
         tvAbout.text = details.about
         tvSchedule.text = "${details.schedule}"
