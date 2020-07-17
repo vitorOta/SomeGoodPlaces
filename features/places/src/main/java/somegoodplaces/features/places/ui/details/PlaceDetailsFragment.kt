@@ -8,10 +8,14 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.navigation.ui.NavigationUI
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.places_fragment_details.*
+import kotlinx.android.synthetic.main.places_layout_details_photos_and_about.*
+import kotlinx.android.synthetic.main.places_layout_details_schedule_and_address.*
+import kotlinx.android.synthetic.main.places_layout_details_toolbar.*
 import somegoodplaces.features.places.R
 import somegoodplaces.features.places.model.PlaceDetails
+import somegoodplaces.features.places.ui.details.adapters.PhotosAdapter
 import somegoodplaces.libraries.common.ViewState
+import somegoodplaces.libraries.common.extensions.toString
 import somegoodplaces.libraries.ui_components.BaseFragment
 import somegoodplaces.libraries.ui_components.extensions.loadImage
 
@@ -22,6 +26,8 @@ class PlaceDetailsFragment : BaseFragment(R.layout.places_fragment_details) {
 
     private val navController by lazy { findNavController() }
 
+    private val photosAdapter by lazy { PhotosAdapter() }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupView()
@@ -30,8 +36,9 @@ class PlaceDetailsFragment : BaseFragment(R.layout.places_fragment_details) {
     }
 
     private fun setupView() {
-        imageToolbar.loadImage(args.imageUrl)
         NavigationUI.setupWithNavController(toolbar, navController)
+        imageToolbar.loadImage(args.imageUrl)
+        rvPhotos.adapter = photosAdapter
     }
 
     private fun setupObservables() {
@@ -55,8 +62,15 @@ class PlaceDetailsFragment : BaseFragment(R.layout.places_fragment_details) {
         }
     }
 
-    private fun updateView(placeDetails: PlaceDetails) {
-        toolbar.title = placeDetails.name
-        imageToolbar.loadImage(placeDetails.image)
+    private fun updateView(details: PlaceDetails) {
+        toolbar.title = details.name
+        ratingBar.rating = details.review
+        rating.text = details.review.toString(1)
+        imageToolbar.loadImage(details.image, placeholderRes = R.drawable.ic_image)
+        photosAdapter.submitList(details.photos)
+        tvAbout.text = details.about
+        tvSchedule.text = "${details.schedule}"
+        tvPhone.text = details.phone
+        tvAddress.text = details.address
     }
 }

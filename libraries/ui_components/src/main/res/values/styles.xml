@@ -16,6 +16,8 @@
     <style name="AppTheme.RatingBarStyle" parent="Widget.AppCompat.RatingBar.Small">
         <!--        <item name="android:progressDrawable">@drawable/rating_progress_drawable</item>-->
         <item name="android:stepSize">1</item>
+        <item name="android:numStars">5</item>
+        <item name="android:isIndicator">true</item>
     </style>
 
     <style name="AppTheme.ToolbarTextAppearance">
@@ -25,5 +27,11 @@
 
     <style name="AppTheme.ToolbarTextAppearance.Expanded">
         <item name="android:textSize">32sp</item>
+    </style>
+
+    <style name="AppTheme.HeaderTitle">
+        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
     </style>
 </resources>

@@ -8,16 +8,14 @@
 
     <fragment
         android:id="@+id/places_nav_main"
-        android:name="somegoodplaces.features.places.ui.main.PlacesMainFragment"
-        android:label="PlacesMainFragment">
+        android:name="somegoodplaces.features.places.ui.main.PlacesMainFragment">
         <action
             android:id="@+id/places_nav_action_main_to_details"
             app:destination="@id/places_nav_details" />
     </fragment>
     <fragment
         android:id="@+id/places_nav_details"
-        android:name="somegoodplaces.features.places.ui.details.PlaceDetailsFragment"
-        android:label="PlaceDetailsFragment">
+        android:name="somegoodplaces.features.places.ui.details.PlaceDetailsFragment">
         <argument
             android:name="placeId"
             app:argType="integer" />

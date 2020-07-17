@@ -1,5 +1,10 @@
 <resources>
     <string name="places_generic_error">An error has occurred! Please try again later</string>
 
-    <string name="places_main_fragment_title">Home</string>
+    <string name="places_main_title">Home</string>
+
+    <string name="places_details_photos">Photos</string>
+    <string name="places_details_about">About</string>
+    <string name="places_details_reviews">Reviews</string>
+
 </resources>

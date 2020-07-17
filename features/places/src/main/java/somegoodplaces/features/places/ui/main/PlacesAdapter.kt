@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.places_item_place.view.*
 import somegoodplaces.features.places.R
 import somegoodplaces.features.places.model.Place
+import somegoodplaces.libraries.common.extensions.toString
 import somegoodplaces.libraries.ui_components.extensions.loadImage
 
 internal class PlacesAdapter(private val onClick: (Place) -> Unit) :
@@ -27,7 +28,7 @@ internal class PlacesAdapter(private val onClick: (Place) -> Unit) :
             name.text = item.name
             type.text = item.type
             ratingBar.rating = item.review
-            rating.text = String.format("%.1f", item.review)
+            rating.text = item.review.toString(1)
             imgPlace.loadImage(item.image)
             setOnClickListener { onClick(item) }
         }
