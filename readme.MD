@@ -1,5 +1,7 @@
 ## SomeGoodPlaces
 
+<img src="https://raw.githubusercontent.com/vitorOta/SomeGoodPlaces/master/screen.gif" width="275">
+
 #### Language
  - Kotlin
 
